@@ -10,14 +10,42 @@
 }
 
 body{
+    font-family: 'ArialRounded';
+    font-weight: 300;
     margin: 0;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #D95550;
+    color: white;
+}
+
+header{
+    /* width: 100vw; */
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #eee ;
+}
+header img{
+    width: 30px;
+    height: 30px;
+    box-sizing: cover;
+    
+}
+
+header h1{
+    font-size: 25px;
+    padding-left: 10px;
 }
 
 /* define board */
 
 .board{
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
     display: grid;
     justify-content: center;
     align-content: center;
@@ -27,14 +55,16 @@ body{
 /* define cells */
 
 .cell{
+    background-color: #DD6662;
     position: relative;
     width: var(--cell-size);
     height: var(--cell-size);
-    border: 1px solid black;
+    border: 1px solid white;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    border-radius: 10%;
 }
 
 /* border-top remove */
@@ -67,7 +97,7 @@ body{
 }
 .board.x .cell:not(.x):not(.o):hover::before, 
 .board.x .cell:not(.x):not(.o):hover::after{
-    background-color: lightgray;
+    background-color: lightgray;;
 }
 .cell.x::before,.cell.x::after,
 .board.x .cell:not(.x):not(.o):hover::before, 
@@ -88,10 +118,10 @@ body{
 
 /* create a circle  */
 .cell.o::before{
-    background-color: black;
+    background-color: whitesmoke;
 }
 .board.o .cell:not(.x):not(.o):hover::before{
-    background-color: lightgrey;
+    background-color: lightgray;
 }
 
 .cell.o::before,.cell.o::after,
@@ -110,7 +140,7 @@ body{
 .cell.o::after,.board.o .cell:not(.o):not(.x):hover::after{
     width: calc(var(--mark-size)*0.7);
     height: calc(var(--mark-size)*0.7);
-    background-color: white;
+    background-color: #DD6662;
 }
 
 /* avoid clicks on elemnts */
