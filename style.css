@@ -1,0 +1,157 @@
+/* global variables */
+
+:root{
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size)*0.9);
+}
+
+*,*::after,*::before{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+
+/* define board */
+
+.board{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+/* define cells */
+
+.cell{
+    position: relative;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* border-top remove */
+
+.cell:first-child , .cell:nth-child(2), .cell:nth-child(3){
+    border-top: none;
+}
+/* border-bottom remove */
+
+.cell:last-child , .cell:nth-child(8), .cell:nth-child(7){
+    border-bottom: none;
+}
+
+/* border-right remove */
+
+.cell:last-child , .cell:nth-child(6), .cell:nth-child(3){
+    border-right: none;
+}
+
+/* border-left  remove */
+
+.cell:first-child , .cell:nth-child(4), .cell:nth-child(7){
+    border-left: none;
+}
+
+/* create an x */
+
+.cell.x::before,.cell.x::after{
+    background-color: black;
+}
+.board.x .cell:not(.x):not(.o):hover::before, 
+.board.x .cell:not(.x):not(.o):hover::after{
+    background-color: lightgray;
+}
+.cell.x::before,.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::before, 
+.board.x .cell:not(.x):not(.o):hover::after{
+    position: absolute;
+    content: '';
+    width: calc(var(--mark-size)*0.15);
+    height: var(--mark-size);
+   
+}
+/* rotate each bar */
+.cell.x::before,.board.x .cell:hover::before{
+    transform: rotate(45deg);
+}
+.cell.x::after,.board.x .cell:hover::after{
+    transform: rotate(-45deg);
+}
+
+/* create a circle  */
+.cell.o::before{
+    background-color: black;
+}
+.board.o .cell:not(.x):not(.o):hover::before{
+    background-color: lightgrey;
+}
+
+.cell.o::before,.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::before,
+.board.o .cell:not(.x):not(.o):hover::after{
+    position: absolute;
+    content: '';
+    border-radius: 50%;
+}
+/* rotate each bar */
+.cell.o::before, .board.o .cell:not(.x):not(.o):hover::before{
+    width: var(--mark-size);
+    height: var(--mark-size);
+   
+}
+.cell.o::after,.board.o .cell:not(.o):not(.x):hover::after{
+    width: calc(var(--mark-size)*0.7);
+    height: calc(var(--mark-size)*0.7);
+    background-color: white;
+}
+
+/* avoid clicks on elemnts */
+
+.cell.x, .cell.o{
+    cursor: not-allowed;
+}
+
+/* upon hover  */
+
+.winning-message{
+    display: none;
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.9);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    flex-flow: column wrap;
+}
+
+.winning-message button{
+    font-size: 3rem;
+    background-color: white;
+    color: black;
+    padding: .2rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.winning-message button:hover{
+    border-color: white;
+    background-color: black;
+    color: white;
+}
+
+.winning-message.show{
+    display: flex;
+}
