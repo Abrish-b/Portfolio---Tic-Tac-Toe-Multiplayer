@@ -15,8 +15,11 @@ const WIN_COMBO = [
 ]
 const cells = document.querySelectorAll('[data-cell]');
 const board = document.getElementById('board');
-
 const restart = document.getElementById('restartButton');
+
+// socket init
+
+const sock = io();
 
 restart.addEventListener('click', startGame);
 

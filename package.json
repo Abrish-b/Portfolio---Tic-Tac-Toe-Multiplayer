@@ -1,0 +1,27 @@
+{
+  "name": "portfolio---tic-tac-toe-multiplayer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "dev": "nodemon server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abrish-b/Portfolio---Tic-Tac-Toe-Multiplayer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abrish-b/Portfolio---Tic-Tac-Toe-Multiplayer/issues"
+  },
+  "homepage": "https://github.com/Abrish-b/Portfolio---Tic-Tac-Toe-Multiplayer#readme",
+  "devDependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16",
+    "socket.io": "^4.5.0"
+  }
+}
